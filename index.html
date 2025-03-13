@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /><!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
+
 <body>
+    <header>
+        <!--https://de.wikipedia.org/wiki/Stade_de_Luxembourg#/media/Datei:Baustelle_National-Stadion_Luxembourg_01.jpg -->
+        <img src="images/header.jpg" alt="Stadion im Bau">
+        <a href="https://github.com/PriPh625/top"><img src="images/user.jpg" alt="Laurent Jans"></a>
+    </header>
     <main>
         <h1>Stade de Luxembourg </h1>
         <h2>Fussballstadion der luxemburgischen Nationalmanschaft</h2>
@@ -18,7 +24,7 @@
         </p>
         <a href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg">Quelle: Wikipedia</a>
         <figure>
-            <img src="images/Bild_attraction.jpg" alt="Stadion während eines Fussballspiels">
+            <img src="images/attraction.jpg" alt="Stadion während eines Fussballspiels">
             <figcaption>Blick auf das Spielfeld (Quelle: <a href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg#/media/Datei:Stade_de_Luxembourg,_Luxembourg_vs_Azebaidjan_2021-09-01_(103).jpg">Wikimedia</a>)
 
             </figcaption>
@@ -34,12 +40,12 @@
             <a href="https://Basti-10.github.io/nz/">nächste Etappe</a>
     </footer>
     <script>
-        var map = L.map('map').setView([49.5777, 6,1141], 11);
+        var map = L.map('map').setView([49.577037, 6,114122], 11);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-        var marker = L.marker([49.5777, 6,1141]).addTo(map);
+        var marker = L.marker([49.577037, 6,114122]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     </script>
 </body>
