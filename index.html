@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stade de Luxembourg</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /><!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -16,38 +20,48 @@
     </header>
     <main>
         <artical>>
-        <h1>Stade de Luxembourg </h1>
-        <h2>Fussballstadion der luxemburgischen Nationalmanschaft</h2>
-        <p>
-            Das <strong>Stade de Luxembourg</strong> ist ein Rugby- und Fußballstadion bei Kockelscheuer im Süden der luxemburgischen Hauptstadt Luxemburg. Es ersetzte das <em>Josy-Barthel-Stadion</em>, das bisherige Nationalstadion. Im Stadion fand am 1. September 2021 mit dem WM-Qualifikationsspiel gegen Aserbaidschan die erste Partie im Neubau statt.</p>
-        <p>
-            Der Name des Stadions wurde auf einer Pressekonferenz im Juli 2020 wie bereits zuvor in Frankreich das Stade de France mit <em>Stade de Luxembourg</em> bekannt gegeben.Nach der Enthüllung des Namens gab es in der Bevölkerung und in der lokalen Presse massive Beschwerden über die mangelnde Kreativität und den Gebrauch der französischen Sprache bei der Benennung. Eine Petition wurde sogar bei der Abgeordnetenkammer eingereicht, um den Namen in etwas Kreativeres zu ändern und vor allem die luxemburgische Sprache zu verwenden.
-        </p>
-        <a href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg">Quelle: Wikipedia</a>
-        <figure>
-            <img src="images/attraction.jpg" alt="Stadion während eines Fussballspiels">
-            <figcaption>Blick auf das Spielfeld (Quelle: <a href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg#/media/Datei:Stade_de_Luxembourg,_Luxembourg_vs_Azebaidjan_2021-09-01_(103).jpg">Wikimedia</a>)
+            <h1>Stade de Luxembourg </h1>
+            <h2>Fussballstadion der luxemburgischen Nationalmanschaft</h2>
+            <p>
+                Das <strong>Stade de Luxembourg</strong> ist ein Rugby- und Fußballstadion bei Kockelscheuer im Süden
+                der luxemburgischen Hauptstadt Luxemburg. Es ersetzte das <em>Josy-Barthel-Stadion</em>, das bisherige
+                Nationalstadion. Im Stadion fand am 1. September 2021 mit dem WM-Qualifikationsspiel gegen Aserbaidschan
+                die erste Partie im Neubau statt.</p>
+            <p>
+                Der Name des Stadions wurde auf einer Pressekonferenz im Juli 2020 wie bereits zuvor in Frankreich das
+                Stade de France mit <em>Stade de Luxembourg</em> bekannt gegeben.Nach der Enthüllung des Namens gab es
+                in der Bevölkerung und in der lokalen Presse massive Beschwerden über die mangelnde Kreativität und den
+                Gebrauch der französischen Sprache bei der Benennung. Eine Petition wurde sogar bei der
+                Abgeordnetenkammer eingereicht, um den Namen in etwas Kreativeres zu ändern und vor allem die
+                luxemburgische Sprache zu verwenden.
+            </p>
+            <a href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg">Quelle: Wikipedia</a>
+            <figure>
+                <img src="images/attraction.jpg" alt="Stadion während eines Fussballspiels">
+                <figcaption>Blick auf das Spielfeld (Quelle: <a
+                        href="https://de.wikipedia.org/wiki/Stade_de_Luxembourg#/media/Datei:Stade_de_Luxembourg,_Luxembourg_vs_Azebaidjan_2021-09-01_(103).jpg">Wikimedia</a>)
 
-            </figcaption>
-        </figure>
-        <h3>Übersichtskarte</h3>
-        <div id="map" style="width:900px;height:600px;border:1px solid silver"></div>
+                </figcaption>
+            </figure>
+            <h3>Übersichtskarte</h3>
+            <div id="map" style="width:900px;height:600px;border:1px solid silver"></div>
         </artical>
 
     </main>
     <footer>
         <a href="https://StephanPumpernik.github.io/nz/">vorhergehende Etappe</a>
-            <a href="https://PriPh625.github.io/nz/">diese Etappe</a>
-            <a href="https://Basti-10.github.io/nz/">nächste Etappe</a>
+        <a href="https://PriPh625.github.io/nz/">diese Etappe</a>
+        <a href="https://Basti-10.github.io/nz/">nächste Etappe</a>
     </footer>
     <script>
-        var map = L.map('map').setView([49.577037, 6,114122], 11);
+        var map = L.map('map').setView([49.577037, 6, 114122], 11);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-        var marker = L.marker([49.577037, 6,114122]).addTo(map);
+        var marker = L.marker([49.577037, 6, 114122]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     </script>
 </body>
+
 </html>
