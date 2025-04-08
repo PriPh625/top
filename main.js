@@ -214,40 +214,66 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-//loop über Etappen
+// Maßstab einfügen 
+L.control.scale({
+    imperial: false,
+}).addTo(map);
+
+// LayerGroup
+let markerGroup = L.layerGroup().addTo(map);
+
+// loop über Etappen 
 for (let i = 0; i < STOPS.length; i++) {
 
-    //Marker zeichnen
-    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+    //Maker zeichnen
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]);
 
-    //Popup definieren und öffnen
-    marker.bindPopup(`<h2>${STOPS[i].title}</h2> 
-        <ul> 
-            <li>Geogr. Breite: ${STOPS[i].lat.toFixed(5)}°</li> 
-            <li>Geogr. Länge: ${STOPS[i].lng.toFixed(5)}°</li> 
-        </ul>
-     `);
+    //Popup definieren 
+    marker.bindPopup(`
 
-     //auf eigene Etappe blicken und Popup öffnen
-     if (STOPS[i].user =="PriPh625") {
-       map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom)
+<h2>${STOPS[i].title}</h2>
+<ul>
+<li> Geogr. Breite: ${STOPS[i].lat.toFixed(3)}° </li>
+<li> Geogr. Länge: ${STOPS[i].lng.toFixed(3)}°</li>
+</ul>
+`);
+
+    // Marker zur Gruppe hinzufügen
+    marker.addTo(markerGroup);
+
+    // auf eigene Etappe blicken und Popup öffnen
+    if (STOPS[i].user == "PriPh625") {
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
         marker.openPopup();
-     }
+    }
 
-     //Pulldownmenü befüllen
-     let option = document.createElement("option");
-     option.value = STOPS[i].user;
-     option.text = STOPS[i].title;
-     if (STOPS[i].user =="PriPh625") {
+    // Pulldownmenü befüllen
+    let option = document.createElement("option");
+    option.value = STOPS[i].user;
+    option.text = STOPS[i].title;
+    if (STOPS[i].user == "PriPh625") {
         option.selected = true;
-     }
-     document.querySelector("#pulldown select").appendChild(option);
-}
+    }
+
+    document.querySelector("#pulldown select").appendChild(option);
+
+};
+
+//Layercontrol
+
+L.control.layers({
+    "OpenStreetMap": L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+    "OpenTopoMap": L.tileLayer.provider('OpenTopoMap'),
+    "ESRIWorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
+}, {
+    "Orte": markerGroup,
+}).addTo(map);
 
 // auf Änderungen beim Pulldown reagieren
-document.querySelector("#pulldown select").onchange = function(evt) {
-    let url =`https://${evt.target.value}.github.io/top`;
-    //console.log(url);
+document.querySelector("#pulldown select").onchange = function (evt) {
+
+    let url = `https://${evt.target.value}.github.io/nz`
     //console.log(evt.target.value);
+    //console.log(url);
     window.location = url;
-}
+};
